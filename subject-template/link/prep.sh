@@ -8,5 +8,5 @@ set -e
 
 source globals.sh
 
-bash convert-and-wrap-raw-data.sh $DICOM_ARCHIVE $NIFTI_DIR $SUBJ $RUNORDER_FILE
-bash qa-wrapped-data.sh $NIFTI_DIR $QA_DIR
+bash scripts/convert-and-wrap-raw-data.sh $DICOM_ARCHIVE $NIFTI_DIR $SUBJ $RUNORDER_FILE
+bash scripts/qa-wrapped-data.sh $NIFTI_DIR $QA_DIR
