@@ -7,7 +7,6 @@ set -e # stop immediately when an error occurs
 
 # add necessary directories to the system path
 export PATH=$PATH:/exanet/ntb/packages/bxh_xcede_tools/bin
-export PATH=$PATH:/exanet/ntb/packages/psych-building-blocks/pipeline
 export MAGICK_HOME=/exanet/ntb/packages/ImageMagick-6.5.9-9
 
 
@@ -15,7 +14,7 @@ SUBJ=<<SUBJECT_ID>>
 PROJ_DIR=../../
 SUBJECT_DIR=$PROJ_DIR/subjects/$SUBJ
 
-RUNORDER_FILE=run_order.txt
+RUNORDER_FILE=run-order.txt
 
 SCRIPT_DIR=scripts
 FSF_DIR=fsf
