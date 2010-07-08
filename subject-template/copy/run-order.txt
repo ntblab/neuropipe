@@ -33,8 +33,8 @@ circle_localizer02
 circle_localizer03
 sagittal_scout01
 t1_flash
-functional01
-functional02
+functional01 124
+functional02 124
 t1_mprage
 fieldmap01
 fieldmap02
