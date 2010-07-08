@@ -49,9 +49,11 @@ subj_dir=$SUBJECTS_DIR/$subj
 
 mkdir -p $subj_dir
 
-# link in each file in LINK_DIR, making their parent directories as needed
+# link in each file in LINK_DIR, making their parent directories as needed. to
+# keep things portable, the code makes relative links, which complicates the
+# logic. see the notes within this loop for more explanation
 for path in $(find $LINK_DIR/*); do
-  rel_path=${path##$LINK_DIR/}
+  rel_path=${path##$LINK_DIR/}   # removes $LINK_DIR from front of path
   rel_dir=$(dirname $rel_path)
 
   if [ -d "$path" ]; then
@@ -59,7 +61,17 @@ for path in $(find $LINK_DIR/*); do
     continue
   fi
 
-  ln --symbolic --force ../../$path $subj_dir/$rel_path
+  # because we're recursing into LINK_DIR, we have to build up a prefix of
+  # ../'s that gets one longer for each directory we dive into. that's what the
+  # following hunk of code does
+  p=$path
+  prefix=''
+  while [ "$(dirname $p)" != '.' ]; do
+    prefix="$prefix../"
+    p=$(dirname $p)
+  done
+  
+  ln --symbolic --force ${prefix}$path $subj_dir/$rel_path
 done
 
 # copy in each file in COPY_DIR, making their parent directories as needed, and
