@@ -54,10 +54,14 @@ temp_output_dir=$(mktemp -d)
 tar --extract --gunzip --file=$dicom_archive --directory=$temp_dicom_dir
 dicom2bxh $temp_dicom_dir/* $temp_output_dir/$PREFIX.bxh 1>/dev/null 2>/dev/null
 
+# strip comments from run order file
+stripped_run_order_file=$(mktemp)
+sed '/^#/d;s/#.*//' $run_order_file > $stripped_run_order_file
+
 # check that the actual number of scans retrieved matches what's expected, and
 # exit with an error if not.
 num_actual_scans=$(find $temp_output_dir/*.bxh -maxdepth 1 -type f | wc -l)
-num_expected_scans=$(wc -l < $run_order_file)
+num_expected_scans=$(wc -l < $stripped_run_order_file)
 if [ $num_actual_scans != $num_expected_scans ]; then
   echo "found $num_actual_scans scans, but $num_expected_scans were described in $run_order_file. check that you're listing enough scans for your circle localizer, etc... because those may convert as more than one scan." >/dev/stderr
   exit $UNEXPECTED_NUMBER_OF_SCANS
@@ -68,7 +72,8 @@ fi
 # how many TRs are expected in a particular scan, check that there are actually
 # that many TRs, and exit with an error if not.
 number=0
-while read name num_expected_trs; do
+# the sed magic here strips out comments
+cat $stripped_run_order_file | while read name num_expected_trs; do
   let "number += 1"
   if [ $name == $ERROR_FLAG ]; then
     continue
@@ -92,9 +97,10 @@ while read name num_expected_trs; do
       exit $UNEXPECTED_NUMBER_OF_TRS
     fi
   fi
-done < $run_order_file
+done
 
 rm -f $temp_output_dir/$PREFIX-*.bxh
 rm -f $temp_output_dir/$PREFIX-*.dat
+rm -f $stripped_run_order_file
 mv $temp_output_dir/* $output_dir
 
