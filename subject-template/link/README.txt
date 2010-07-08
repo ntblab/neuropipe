@@ -11,7 +11,7 @@ all filepaths in this file will be written as relative to this directory
 
 initially, your subject directory will look like this:
   |--README.txt
-  |--runorder.txt
+  |--run-order.txt
   |--globals.sh
   |--scripts/
   |--analysis/
@@ -26,7 +26,7 @@ your first step is to acquire the raw, DICOM formatted data from your fMRI scan
 of this subject. archive and compress that data into a Gzipped TAR archive at
 *data/raw.tar.gz*
 
-*runorder.txt* should describe your ideal scanning protocol, if you customized
+*run-order.txt* should describe your ideal scanning protocol, if you customized
 it in the subject template. if your scanning protocol for this subject differed
 at all from the one in *runorder.txt*, change that file now to reflect the
 protocol you actually followed
