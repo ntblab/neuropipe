@@ -25,7 +25,7 @@ TEMPLATE_DIR=subject-template
 SUBJECTS_DIR=subjects
 LINK_DIR=$TEMPLATE_DIR/link
 COPY_DIR=$TEMPLATE_DIR/copy
-SUBJ_ID_PATTERN='<<SUBJ_ID>>'
+SUBJ_ID_PATTERN='<<SUBJECT_ID>>'
 
 
 # display usage instructions if this script was run improperly
