@@ -26,10 +26,10 @@ your first step is to acquire the raw, DICOM formatted data from your fMRI scan
 of this subject. archive and compress that data into a Gzipped TAR archive at
 *data/raw.tar.gz*
 
-*run-order.txt* should describe your ideal scanning protocol, if you customized
-it in the subject template. if your scanning protocol for this subject differed
-at all from the one in *runorder.txt*, change that file now to reflect the
-protocol you actually followed
+*run-order.txt* should describe your ideal scanning protocol, assuming you
+customized it in the subject template. if your scanning protocol for this
+subject differed at all from the one in *runorder.txt*, change that file now to
+reflect the protocol you actually followed
 
 next, we will:
 - create BXH header files for your data (see
