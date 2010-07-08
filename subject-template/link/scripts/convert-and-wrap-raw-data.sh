@@ -54,9 +54,9 @@ temp_output_dir=$(mktemp -d)
 tar --extract --gunzip --file=$dicom_archive --directory=$temp_dicom_dir
 dicom2bxh $temp_dicom_dir/* $temp_output_dir/$PREFIX.bxh 1>/dev/null 2>/dev/null
 
-# strip comments from run order file
+# strip blank lines and comments from run order file
 stripped_run_order_file=$(mktemp)
-sed '/^#/d;s/#.*//' $run_order_file > $stripped_run_order_file
+sed '/^$/d;/^#/d;s/#.*//' $run_order_file > $stripped_run_order_file
 
 # check that the actual number of scans retrieved matches what's expected, and
 # exit with an error if not.
