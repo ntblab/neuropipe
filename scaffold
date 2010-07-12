@@ -97,5 +97,7 @@ for path in $(find $COPY_DIR/*); do
   mv $tmp $subj_dir/$rel_path
 done
 
+echo "created subject directory '$subj_dir'"
+
 echo "if this is your first time setting up a subject with NeuroPipe,"
 echo "read README.txt in the subject's directory (just created)"
