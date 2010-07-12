@@ -21,7 +21,10 @@ in that subject's directory, and leave the template alone
 
 we'll start by setting you up for within-subjects analysis
 
-first, you must specify your ideal fMRI scanning protocol: what pulse sequences
+first, you should open protocol.txt, and follow its directions to describe your
+experimental protocol so that others can understand what your data might mean.
+
+next, you must specify your ideal fMRI scanning protocol: what pulse sequences
 you would run and in what order, if nothing went wrong. open the file
 *subject-template/copy/runorder.txt*. it contains directions on how to modify it
 so it fits your scanning protocol--follow them. this file will be copied into
