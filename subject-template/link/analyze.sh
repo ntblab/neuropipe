@@ -16,7 +16,6 @@ source globals.sh   # load subject-wide settings, such as the subject's ID
 # of your high-level analysis scripts (behavioral.sh, fir.sh, ...) where
 # indicated, below
 echo "== beginning analysis of $SUBJ at $(date) =="
-bash $SCRIPT_DIR/make-webpage.sh > index.html
 bash prep.sh
 # run your high-level analysis scripts here
 echo "== finished analysis of $SUBJ at $(date) =="
