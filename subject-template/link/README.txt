@@ -28,7 +28,7 @@ of this subject. archive and compress that data into a Gzipped TAR archive at
 
 *run-order.txt* should describe your ideal scanning protocol, assuming you
 customized it in the subject template. if your scanning protocol for this
-subject differed at all from the one in *runorder.txt*, change that file now to
+subject differed at all from the one in *run-order.txt*, change that file now to
 reflect the protocol you actually followed
 
 next, we will:
