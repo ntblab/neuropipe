@@ -11,8 +11,8 @@ fell asleep, etc...
 to support these occasional deviations without overcomplicating the average case
 of no deviations, NeuroPipe uses a template system. you customize the directory
 *subject-template* to perform the ideal analysis for a subject. when you collect
-data for a new subject, you run the command *skel SUBJECT_ID* which creates a
-directory at *subject/SUBJECT_ID* based on the template. if there are analysis
+data for a new subject, you run the command *scaffold SUBJECT_ID* which creates
+a directory at *subject/SUBJECT_ID* based on the template. if there are analysis
 deviations to encode for this subject, you simply change the appropriate files
 in that subject's directory, and leave the template alone
 
