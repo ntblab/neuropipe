@@ -26,8 +26,8 @@ experimental protocol so that others can understand what your data might mean.
 
 next, you must specify your ideal fMRI scanning protocol: what pulse sequences
 you would run and in what order, if nothing went wrong. open the file
-*subject-template/copy/runorder.txt*. it contains directions on how to modify it
-so it fits your scanning protocol--follow them. this file will be copied into
+*subject-template/copy/run-order.txt*. it contains directions on how to modify
+it so it fits your scanning protocol--follow them. this file will be copied into
 each new subject's directory (like all other files in *subject-template/copy/*),
 so you can modify it on a per-subject basis where necessary
 
