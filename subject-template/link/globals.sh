@@ -10,7 +10,7 @@ export PATH=$PATH:/exanet/ntb/packages/bxh_xcede_tools/bin
 export MAGICK_HOME=/exanet/ntb/packages/ImageMagick-6.5.9-9
 
 
-SUBJ=<<SUBJECT_ID>>
+source scripts/subject_id.sh  # this loads the variable SUBJ
 PROJ_DIR=../../
 SUBJECT_DIR=$PROJ_DIR/subjects/$SUBJ
 
