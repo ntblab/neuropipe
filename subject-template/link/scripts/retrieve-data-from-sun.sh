@@ -12,7 +12,7 @@ source globals.sh
 
 tmp_dir="$(mktemp -d)"
 data_dir=$tmp_dir/$subj
-dicom_rename -patid $subj -destdir $tmp_dir -prefix $subj > /dev/null  #dicom_rename is noisy, so we redirect its stdout to /dev/null, where no one can hear you scream...
+dicom_rename -patid $SUBJ -destdir $tmp_dir -prefix $SUBJ > /dev/null  #dicom_rename is noisy, so we redirect its stdout to /dev/null, where no one can hear you scream...
 #mv $data_dir $DICOM_DIR
 
 output_file=raw.tar.gz
