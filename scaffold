@@ -88,7 +88,7 @@ for path in $(find $COPY_DIR/*); do
 
   tmp=$(mktemp)
   cat $path | sed "s:$SUBJ_ID_PATTERN:$subj:g" > $tmp;
-  if [ -e "$subj_dir/$rel_path" ] && [ -n $(diff $tmp "$subj_dir/$rel_path") ]; then
+  if [ -e "$subj_dir/$rel_path" ] && [ -n "$(diff $tmp $subj_dir/$rel_path)" ]; then
     echo "WARNING: $rel_path has been modified. not updating it" > /dev/stderr
     rm -f $tmp
     continue
