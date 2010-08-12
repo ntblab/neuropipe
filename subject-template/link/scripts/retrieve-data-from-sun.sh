@@ -11,7 +11,7 @@ set -e # fail immediately on error
 source globals.sh
 
 tmp_dir="$(mktemp -d)"
-data_dir=$tmp_dir/$subj
+data_dir=$tmp_dir/$SUBJ
 dicom_rename -patid $SUBJ -destdir $tmp_dir -prefix $SUBJ > /dev/null  #dicom_rename is noisy, so we redirect its stdout to /dev/null, where no one can hear you scream...
 #mv $data_dir $DICOM_DIR
 
