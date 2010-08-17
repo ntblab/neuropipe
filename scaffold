@@ -21,7 +21,7 @@ set -e # stop immediately when an error occurs
 
 
 # set global variables
-TEMPLATE_DIR=subject-template
+TEMPLATE_DIR=prototype
 SUBJECTS_DIR=subjects
 LINK_DIR=$TEMPLATE_DIR/link
 COPY_DIR=$TEMPLATE_DIR/copy
