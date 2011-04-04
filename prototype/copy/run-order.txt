@@ -22,21 +22,33 @@
 # comments to remind yourself why
 #
 # GOTCHAS:
-# - circle localizers transfer as 3 separate runs, so for each circle localizer
-#   you ran, you must include 3 lines in this file 
+# - circle localizers from allegra transfer as 3 separate runs, so for each circle
+#   localizer you ran, you must include 3 lines in this file 
+# - circle localizers (also called scouts) from skyra transfer as 4 separate runs
 # - fieldmaps transfer as 2 separate runs, so include 2 lines in this file for
 #   each fieldmap you ran
+# - dti scans transfer as 6 separate runs, so include 6 lines in this file for
+#   each dti scan. you may not need all of them, depending on how your own
+#   pre-processing is structured, so you might want to use ERROR_RUN for some of
+#   the unnecessary runs (usually the last 5) 
 
 circle_localizer01
 circle_localizer02
 circle_localizer03
+circle_localizer04
 sagittal_scout01
 t1_flash01
-ERROR_RUN
-ERROR_RUN
-ERROR_RUN
+functional01 355
+functional02 355
 t1_mprage_sag01
-ERROR_RUN
-localizer01 244
+ERROR_RUNy
+functonial03 244
 fieldmap01
 fieldmap02
+dti_fieldmap01
+dti_64dir01
+ERROR_RUN
+ERROR_RUN
+ERROR_RUN
+ERROR_RUN
+ERROR_RUN
