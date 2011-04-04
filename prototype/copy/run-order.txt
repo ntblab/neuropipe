@@ -27,14 +27,16 @@
 # - fieldmaps transfer as 2 separate runs, so include 2 lines in this file for
 #   each fieldmap you ran
 
-# EXAMPLE RUN ORDER FOLLOWS. CUSTOMIZE THIS TO YOUR PROJECT
 circle_localizer01
 circle_localizer02
 circle_localizer03
 sagittal_scout01
-t1_flash
-functional01 124
-functional02 124
-t1_mprage
+t1_flash01
+ERROR_RUN
+ERROR_RUN
+ERROR_RUN
+t1_mprage_sag01
+ERROR_RUN
+localizer01 244
 fieldmap01
 fieldmap02

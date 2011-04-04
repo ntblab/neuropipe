@@ -13,5 +13,5 @@ PROJECT_DIR=$(pwd)
 SUBJECTS_DIR=subjects
 GROUP_DIR=group
 
-ALL_SUBJECTS=$(ls -1d $SUBJECTS_DIR/*/ | cut --delimiter=/ --fields=2)
-
+ALL_SUBJECTS=$(ls -1d $SUBJECTS_DIR/*/ | cut -d / -f 2)
+NON_EXCLUDED_SUBJECTS=$(exclude "$ALL_SUBJECTS")
