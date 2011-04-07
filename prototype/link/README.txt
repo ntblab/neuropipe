@@ -16,6 +16,7 @@ initially, your subject directory will look like this:
   |--scripts/
   |--analysis/
   |--results/
+  |--design/
   `--data/
      `--behavioral/
 
@@ -23,8 +24,8 @@ initially, your subject directory will look like this:
 == getting started
 
 your first step is to acquire the raw, DICOM formatted data from your fMRI scan
-of this subject. archive and compress that data into a Gzipped TAR archive at
-*data/raw.tar.gz*
+of this subject. Use scripts/retrieve-data-from-sun.sh to archive and compress that
+data into a Gzipped TAR archive at *data/raw.tar.gz*
 
 *run-order.txt* should describe your ideal scanning protocol, assuming you
 customized it in the subject template. if your scanning protocol for this
