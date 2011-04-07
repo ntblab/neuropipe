@@ -13,5 +13,14 @@ PROJECT_DIR=$(pwd)
 SUBJECTS_DIR=subjects
 GROUP_DIR=group
 
+function exclude {
+  for subj in $1; do
+    if [ -e $SUBJECTS_DIR/$subj/EXCLUDED ]; then continue; fi
+    echo $subj
+  done
+}
+
+if [ -d $SUBJECTS_DIR ]; then
 ALL_SUBJECTS=$(ls -1d $SUBJECTS_DIR/*/ | cut -d / -f 2)
 NON_EXCLUDED_SUBJECTS=$(exclude "$ALL_SUBJECTS")
+fi
