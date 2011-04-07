@@ -32,7 +32,7 @@ dicom_rename -$scanner -patid $SUBJ -destdir $tmp_dir -prefix $SUBJ > /dev/null
 
 
 output_file=raw.tar.gz
-output_dir=data
+output_dir=$DATA_DIR
 pushd $data_dir > /dev/null
 tar --create --gzip --file=$output_file *
 mv $data_dir/$output_file $(popd)/$output_dir
