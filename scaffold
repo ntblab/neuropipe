@@ -19,10 +19,10 @@
 
 set -e # stop immediately when an error occurs
 
+source globals.sh
 
 # set global variables
 TEMPLATE_DIR=prototype
-SUBJECTS_DIR=subjects
 LINK_DIR=$TEMPLATE_DIR/link
 COPY_DIR=$TEMPLATE_DIR/copy
 SUBJ_ID_PATTERN='<<SUBJECT_ID>>'
@@ -98,6 +98,3 @@ for path in $(find $COPY_DIR/*); do
 done
 
 echo "created subject directory '$subj_dir'"
-
-echo "if this is your first time setting up a subject with NeuroPipe,"
-echo "read README.txt in the subject's directory (just created)"
