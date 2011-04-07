@@ -16,6 +16,7 @@ SUBJECT_DIR=$PROJ_DIR/subjects/$SUBJ
 
 RUNORDER_FILE=run-order.txt
 
+DATA_DIR=data
 SCRIPT_DIR=scripts
 FSF_DIR=fsf
 DICOM_ARCHIVE=data/raw.tar.gz
