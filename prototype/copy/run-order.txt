@@ -31,7 +31,8 @@
 #   each dti scan. you may not need all of them, depending on how your own
 #   pre-processing is structured, so you might want to use ERROR_RUN for some of
 #   the unnecessary runs (usually the last 5) 
-
+#
+# EXAMPLE RUN ORDER FOLLOWS. CUSTOMIZE THIS TO YOUR PROJECT
 circle_localizer01
 circle_localizer02
 circle_localizer03
