@@ -1,6 +1,8 @@
 #!/bin/sh
-# this script prints the total number of kilobytes of physical and swap memory
+# This script prints the total number of kilobytes of physical and swap memory
 # that are available on this system
+#
+# Only for use on rondo, the lab workstations, or any other linux machine
 
 set -e
 
