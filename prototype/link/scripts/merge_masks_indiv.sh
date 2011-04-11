@@ -6,7 +6,7 @@ set -e
 
 if [ $# -ne 4 ]; then
   echo "
-usage: `basename $0` roi_coords roi_names loc_feat_dir dest_dir
+usage: `basename $0` roi_coords roi_names src_dir dest_dir
 
 This script uses the three-column ROI coordinates file (created by pick-rois-interactive.sh)
 and creates a mask for each specified ROI. Each mask includes bilateral ROIs.
@@ -17,14 +17,14 @@ fi
 
 roi_coords=$1
 roi_names=$2
-loc_feat_dir=$3
+src_dir=$3
 dest_dir=$4
 
 source globals.sh
 
 mkdir -p $dest_dir
 
-scripts/transform_coords_std.sh $roi_coords $loc_feat_dir $dest_dir/roi_coords_std.txt
+scripts/transform_coords_std.sh $roi_coords $src_dir $dest_dir/roi_coords_std.txt
 
   l=0
   cat ${dest_dir}/roi_coords_std.txt | while read line; do
@@ -32,7 +32,7 @@ scripts/transform_coords_std.sh $roi_coords $loc_feat_dir $dest_dir/roi_coords_s
 	ycoord=`echo $line | cut -d\  -f 2`
 	zcoord=`echo $line | cut -d\  -f 3`
   l=`expr $l + 1`	
-    bash scripts/make_masks.sh $xcoord $ycoord $zcoord point_mask_${l}.nii.gz sphere_mask_${l}.nii.gz $dest_dir
+    bash scripts/make_masks.sh $src_dir $xcoord $ycoord $zcoord sphere_mask_${l}.nii.gz $dest_dir
   done
 
 m=`ls -l $dest_dir/sphere_mask* | wc -l`
@@ -52,4 +52,4 @@ for ((r=1;r<=$m;r++)); do
 done
 
 rm -rf ${dest_dir}/sphere_mask_?.nii.gz
-rm -rf ${dest_dir}/point_mask_?.nii.gz
+rm -rf ${dest_dir}/point_mask.nii.gz
