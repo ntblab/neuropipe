@@ -28,4 +28,4 @@ SECONDLEVEL_DIR=analysis/secondlevel
 EV_DIR=design
 BEHAVIORAL_OUTPUT_DIR=output/behavioral
 
-SCALING_FACTOR = 10.0 #for use in tranform-to-psc.sh
+SCALING_FACTOR=10.0 #for use in tranform-to-psc.sh
