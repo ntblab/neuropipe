@@ -42,7 +42,7 @@ t1_flash01
 functional01 355
 functional02 355
 t1_mprage_sag01
-ERROR_RUNy
+ERROR_RUN
 functonial03 244
 fieldmap01
 fieldmap02
