@@ -31,7 +31,7 @@ fi
 mkdir -p data/brainpics
 
 #pgmfile=test.pgm
-pgmfile=$(mktemp -t pics).pgm
+pgmfile=$(mktemp).pgm
 pngfile=data/brainpics/brain.png
 
 
