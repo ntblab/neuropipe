@@ -21,8 +21,7 @@ roi=$2
 source globals.sh
 
 #wildly unneccesary way to find out how many subjects are listed in the subject dir
-subjnum=$`ls -A subjects | wc -l` 
-#| cut -c 8-` 
+subjnum=$`ls -A subjects | wc -l`
 
 #if running locally, switch to the other fvstring or modify it to your computer's path to standard brains
 #fvstring='/usr/local/fsl/data/standard/MNI152_T1_2mm_brain.nii.gz '
