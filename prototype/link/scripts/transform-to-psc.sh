@@ -3,10 +3,11 @@
 
 set -e
 
+source globals.sh
 
-if [ $# -ne 5 ]; then
+if [ $# -ne 4 ]; then
   echo "
-  usage: `basename $0` input scaling_factor mean_image mask_image output
+  usage: `basename $0` input mean_image mask_image output
 
   transforms the given image of beta values into an image of % signal change,
   given an appropriate scaling factor (which you must determine), mean signal
@@ -20,14 +21,13 @@ fi
 
 
 input_image=$1
-scaling_factor=$2
-mean_image=$3
-mask_image=$4
-output_image=$5
+mean_image=$2
+mask_image=$3
+output_image=$4
 
 
 fslmaths "$input_image" \
-         -mul "$scaling_factor" \
+         -mul "$SCALING_FACTOR" \
          -div "$mean_image" \
          -mul "$mask_image" \
          -mul "100.0" \
