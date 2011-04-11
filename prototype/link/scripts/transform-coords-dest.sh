@@ -29,7 +29,7 @@ dest_coords_file=$4
 
 src_reg_dir=$src_feat_dir/reg
 dest_reg_dir=$dest_feat_dir/reg
-standard_coords_file=$(mktemp -p test)
+standard_coords_file=$(mktemp)
 
 
 # here we tranform coords src -> standard -> dest
