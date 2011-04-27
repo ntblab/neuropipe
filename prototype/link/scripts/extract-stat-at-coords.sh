@@ -19,7 +19,7 @@ fi
 stat_files=$1
 roi_coords_file=$2
 
-sorted_stat_files=$(ls -1 $stat_files | scripts/sort_numbered_files.py)
+sorted_stat_files=$(ls -rt $stat_files )
 
 # print CSV header
 printf "coordinates,"

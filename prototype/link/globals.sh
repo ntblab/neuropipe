@@ -29,3 +29,13 @@ EV_DIR=design
 BEHAVIORAL_OUTPUT_DIR=output/behavioral
 
 SCALING_FACTOR=10.0 #for use in tranform-to-psc.sh
+
+# Fill in below variables to fit your roi analysis -- all are used in roi.sh or scripts called within it
+ROI_COORDS_FILE=roi.txt
+ROI_REGIONS_FILE=roi_regions.txt
+LOCALIZER_DIR=analysis/firstlevel/localizer_hrf.feat
+FIR_LAG=0:17
+
+ROI_DIR=results/roi
+ROI_KERNEL_TYPE=sphere
+ROI_KERNEL_SIZE=4
