@@ -13,6 +13,11 @@ PROJECT_DIR=$(pwd)
 SUBJECTS_DIR=subjects
 GROUP_DIR=group
 
+#below variables are needed for roi.sh
+ROI_RESULTS_DIR=results
+SUBJ_ROI_DIR=results/roi #path to each subject's roi directory -- the script assumes that
+# each subject's roi data is in the same place within his/her directory
+
 function exclude {
   for subj in $1; do
     if [ -e $SUBJECTS_DIR/$subj/EXCLUDED ]; then continue; fi
