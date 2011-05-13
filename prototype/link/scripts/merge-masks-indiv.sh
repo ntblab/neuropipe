@@ -24,7 +24,7 @@ source globals.sh
 
 mkdir -p $dest_dir
 
-scripts/transform_coords_std.sh $roi_coords $src_dir $dest_dir/roi_coords_std.txt
+scripts/transform-coords-std.sh $roi_coords $src_dir $dest_dir/roi_coords_std.txt
 
   l=0
   cat ${dest_dir}/roi_coords_std.txt | while read line; do
@@ -32,7 +32,7 @@ scripts/transform_coords_std.sh $roi_coords $src_dir $dest_dir/roi_coords_std.tx
 	ycoord=`echo $line | cut -d\  -f 2`
 	zcoord=`echo $line | cut -d\  -f 3`
   l=`expr $l + 1`	
-    bash scripts/make_masks.sh $src_dir $xcoord $ycoord $zcoord sphere_mask_${l}.nii.gz $dest_dir
+    bash scripts/make-masks.sh $src_dir $xcoord $ycoord $zcoord sphere_mask_${l}.nii.gz $dest_dir
   done
 
 m=`ls -l $dest_dir/sphere_mask* | wc -l`
