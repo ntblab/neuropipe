@@ -35,6 +35,7 @@ output_file=raw.tar.gz
 output_dir=$DATA_DIR
 pushd $data_dir > /dev/null
 tar --create --gzip --file=$output_file *
-mv $data_dir/$output_file $(popd)/$output_dir
+popd
+mv $data_dir/$output_file $output_dir
 
 rm -rf $tmp_dir
