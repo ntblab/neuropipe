@@ -28,14 +28,13 @@ source globals.sh
 tmp_dir="$(mktemp -d)"
 data_dir=$tmp_dir/$SUBJ
 dicom_rename -$scanner -patid $SUBJ -destdir $tmp_dir -prefix $SUBJ > /dev/null  
-#dicom_rename is noisy, so we redirect its stdout to /dev/null, where no one can hear you scream...
 
 
 output_file=raw.tar.gz
 output_dir=$DATA_DIR
 pushd $data_dir > /dev/null
 tar --create --gzip --file=$output_file *
-popd
+popd > /dev/null
 mv $data_dir/$output_file $output_dir
 
 rm -rf $tmp_dir
