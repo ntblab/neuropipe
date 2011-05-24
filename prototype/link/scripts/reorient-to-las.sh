@@ -17,28 +17,21 @@ see http://nbirn.net/tools/bxh_tools/index.shtm for details on BXH headers.
   exit
 fi
 
-
 nifti_folder=$1
 
 ORIENTATION=LAS
 
-for bxh_file in `ls $nifti_folder/*.bxh`
-
+for bxh_file in `ls $nifti_folder/*.bxh`; do
+	
 	# reorient each scan
-  scan_file=${nifti_folder}/`basename bxh_file%%.*`
-  temp=$scan_file.old_orientation.bxh
-  mv $scan_file $temp
-  bxhreorient --orientation=$ORIENTATION $temp $scan_file 1>/dev/null 2>/dev/null
+  temp=$bxh_file.old_orientation.bxh
+  mv $bxh_file $temp
+  bxhreorient --orientation=$ORIENTATION $temp $bxh_file  1>/dev/null 2>/dev/null
   rm -f $temp
   
 	# reconvert the scan
-  bxh2analyze -- overwrite --analyzetypes --niigz --niftihdr -s ${nifti_folder}/$scan_file.bxh ${nifti_folder}/$scan_file >/dev/null 2>/dev/null
-end
+  file_prefix=${bxh_file%%.*}
+  bxh2analyze --overwrite --analyzetypes --niigz --niftihdr -s $bxh_file $file_prefix >/dev/null 2>/dev/null
+done
   
-  
-    # code originally in convert-and-wrap-raw-data.sh
-#  scan_file="${temp_output_dir}/${PREFIX}-$number.bxh"
-#  temp=$scan_file.old_orientation.bxh
-#  mv $scan_file $temp
-#  bxhreorient --orientation=$ORIENTATION $temp $scan_file 1>/dev/null 2>/dev/null
-#  rm -f $temp
+ rm -rf ${nifti_folder}/*.dat
