@@ -61,9 +61,12 @@ for subj in $NON_EXCLUDED_SUBJECTS; do
 
 		echo registering ROI to standard for $subj -- ROI: $roi
 		flirt -ref ${feat_dir}/reg/standard -in ${data_dir}/ROI_files/${roi}_T2tse2highres -out ${data_dir}/ROI_files/${roi}_std.nii.gz -applyxfm -init ${feat_dir}/reg/highres2standard.mat -interp sinc -datatype float
-
+		
+		echo dropping voxels below .1 to get rid of aliasing -- ROI: $roi
+		fslmaths ${data_dir}/ROI_files/${roi}_std.nii.gz -thr .1 ${data_dir}/ROI_files/${roi}_std_thr.nii.gz
+		
 		echo binarizing ROI masks for $subj -- ROI: $roi
-		fslmaths ${data_dir}/ROI_files/${roi}_std.nii.gz -bin ${data_dir}/ROI_files/${roi}_std_bin.nii.gz
+		fslmaths ${data_dir}/ROI_files/${roi}_std_thr.nii.gz -bin ${data_dir}/ROI_files/${roi}_std_bin.nii.gz
 
 	done
 done
