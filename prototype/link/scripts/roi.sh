@@ -3,7 +3,7 @@
 
 set -e
 
-if [ $# -lt 1 ]; then ## change to < 1
+if [ $# -lt 1 ]; then
   echo "
 usage: `basename $0` feat_dir1 [feat_dir2] [feat_dir3]
 
@@ -14,6 +14,18 @@ specified run and loads them into R.
 If you'd like to run this analysis for more than one functional run, add
 the name of each run as an option to the command.
 
+Note before beginning: be sure that you have filled out globals.sh with the
+variables needed for this script. This includes:
+-$ROI_REGIONS_FILE, which should have a list of the ROIs you are analyzing, 
+	parated by hemisphere, one per line.
+-$ROI_COORDS_FILE, which should have a list of 3 column coordinates for the
+	ROIs listed in ROI_REGIONS_FILE, *in the same exact order*
+-$LOCALIZER_DIR, which is the path and name of your localizer run
+-$FIR_LAG, in a format starting at 0 -- if you have 18 lags, should look 
+	like this -- 0:17
+-$ROI_KERNEL_TYPE and $ROI_KERNEL_SIZE, which should be decided on based
+	on the design/aims of your study
+	
 Example: `basename $0` pretest encoding1 encoding2 posttest
 
   "
