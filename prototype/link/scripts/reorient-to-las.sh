@@ -17,6 +17,8 @@ see http://nbirn.net/tools/bxh_tools/index.shtm for details on BXH headers.
   exit
 fi
 
+source globals.sh
+
 nifti_folder=$1
 
 ORIENTATION=LAS
