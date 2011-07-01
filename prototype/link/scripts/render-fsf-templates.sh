@@ -17,6 +17,7 @@ function render_firstlevel {
   initial_highres_file=$5
   highres_file=$6
   ev_dir=$7
+  design_dir=$8
 
   subject_dir=$(pwd)
 
@@ -29,5 +30,7 @@ function render_firstlevel {
     | sed "s:<?= \$INITIAL_HIGHRES_FILE ?>:$subject_dir/$initial_highres_file:g" \
     | sed "s:<?= \$HIGHRES_FILE ?>:$subject_dir/$highres_file:g" \
     | sed "s:<?= \$EV_DIR ?>:$subject_dir/$ev_dir:g"
+    | sed "s:<?= \$DESIGN_DIR ?>:$subject_dir/$design_dir:g"
+
 }
 
