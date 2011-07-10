@@ -46,7 +46,7 @@ function fir {
   stat_dir=$feat_dir/stats
   rm -f $stat_dir/cope*.psc.nii.gz
   rm -f $stat_dir/filtered_cope*.psc.nii.gz
-  stat_files=$(seq --format "$stat_dir/cope%g.nii.gz" 1 18)
+  stat_files=$(seq --format "$stat_dir/cope%g.nii.gz" 1 `echo $lag | cut -c 3-`)
   for stat_file in $stat_files; do
     bn=$(basename $stat_file)
     stat_file_prefix=${bn%.nii.gz}
@@ -65,7 +65,7 @@ function fir {
     fi
   done
 
-stat_files=$(seq --format="$stat_dir/filtered_cope%g.psc.nii.gz" 1  18)
+stat_files=$(seq --format="$stat_dir/filtered_cope%g.psc.nii.gz" 1  `echo $lag | cut -c 3-`)
 
 bash scripts/extract-stat-at-coords.sh "$stat_files" $tmp_coords >$output_dir/roi_coords.csv
  

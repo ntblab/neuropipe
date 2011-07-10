@@ -15,6 +15,7 @@ initially, your subject directory will look like this:
   |--globals.sh
   |--scripts/
   |--analysis/
+  |--fsf/
   |--results/
   |--design/
   `--data/
