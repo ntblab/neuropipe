@@ -32,7 +32,7 @@ FALSE=1
 is_functional() {
   file=$1
   num_volumes=$(fslnvols $file)
-  if [[ "$num_volumes" -gt 2 ]]; then
+  if [[ "$num_volumes" -gt 65 ]]; then #changed to 65 so qa doesn't run on dti scans
     return $TRUE
   else
     return $FALSE

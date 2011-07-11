@@ -81,7 +81,7 @@ cat $stripped_run_order_file | while read name num_expected_trs; do
 
   # convert the scan
   niigz_file_prefix=$temp_output_dir/${output_prefix}_$name
-  bxh2analyze --analyzetypes --niigz --niftihdr -s "${temp_output_dir}/${PREFIX}-$number.bxh" $niigz_file_prefix >/dev/null 2>/dev/null
+  bxh2analyze --analyzetypes --niigz --niftihdr -s "${temp_output_dir}/${PREFIX}-$number.bxh" $niigz_file_prefix 1>/dev/null 2>/dev/null
 
   if [ -n "$num_expected_trs" ]; then
     num_actual_trs=$(fslnvols ${niigz_file_prefix}.nii.gz)
