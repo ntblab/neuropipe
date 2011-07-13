@@ -5,7 +5,7 @@ set -e
 
 if [ $# -lt 1 ]; then
   echo "
-usage: `basename $0` feat_dir1 [feat_dir2] [feat_dir3]
+usage: `basename $0` path/to/feat_dir1 [path/to/feat_dir2] [path/to/feat_dir3]
 
 This script runs a psc transform and gaussian filter on your roi coordinates,
 and then extracts the time-locked stats for each coordinate in the space of the
@@ -16,17 +16,14 @@ the name of each run as an option to the command.
 
 Note before beginning: be sure that you have filled out globals.sh with the
 variables needed for this script. This includes:
--$ROI_REGIONS_FILE, which should have a list of the ROIs you are analyzing, 
-	parated by hemisphere, one per line.
+
 -$ROI_COORDS_FILE, which should have a list of 3 column coordinates for the
-	ROIs listed in ROI_REGIONS_FILE, *in the same exact order*
--$LOCALIZER_DIR, which is the path and name of your localizer run
+	ROIs you're looking at
+-$LOCALIZER_DIR, which is the path and name the run that you picked ROIs from
 -$FIR_LAG, in a format starting at 0 -- if you have 18 lags, should look 
 	like this -- 0:17
 -$ROI_KERNEL_TYPE and $ROI_KERNEL_SIZE, which should be decided on based
 	on the design/aims of your study
-	
-Example: `basename $0` pretest encoding1 encoding2 posttest
 
   "
   exit
@@ -46,7 +43,7 @@ function fir {
   stat_dir=$feat_dir/stats
   rm -f $stat_dir/cope*.psc.nii.gz
   rm -f $stat_dir/filtered_cope*.psc.nii.gz
-  stat_files=$(seq --format "$stat_dir/cope%g.nii.gz" 1 `echo $lag | cut -c 3-`)
+  stat_files=$(seq --format "$stat_dir/cope%g.nii.gz" 1 `ls -l $stat_dir/cope*.nii.gz | wc -l`)
   for stat_file in $stat_files; do
     bn=$(basename $stat_file)
     stat_file_prefix=${bn%.nii.gz}
@@ -56,7 +53,7 @@ function fir {
     if [ -f $psc_file ]; then
       echo "$psc_file already exists. skipping"
     else
-      bash scripts/transform-to-psc.sh $stat_file $SCALING_FACTOR $feat_dir/mean_func.nii.gz $feat_dir/mask.nii.gz $psc_file
+      bash scripts/transform-to-psc.sh $stat_file $feat_dir/mean_func.nii.gz $feat_dir/mask.nii.gz $psc_file
     fi
     if [ -f $filtered_psc_file ]; then
       echo "$filtered_psc_file already exists. skipping"
@@ -65,7 +62,7 @@ function fir {
     fi
   done
 
-stat_files=$(seq --format="$stat_dir/filtered_cope%g.psc.nii.gz" 1  `echo $lag | cut -c 3-`)
+stat_files=$(seq --format="$stat_dir/filtered_cope%g.psc.nii.gz" 1  `ls -l $stat_dir/filtered_cope*.nii.gz | wc -l`)
 
 bash scripts/extract-stat-at-coords.sh "$stat_files" $tmp_coords >$output_dir/roi_coords.csv
  
@@ -78,13 +75,4 @@ for run in $@; do
 	mkdir -p $ROI_DIR/`basename ${run%%.*}`
 	fir $run $ROI_DIR/`basename ${run%%.*}`
 done
-
-i=0
-while read line; do
-  regions["$i"]=$line
-  i=$(($i + 1))
-done < $ROI_REGIONS_FILE
-
-R --slave --args $SUBJ $ROI_DIR $FIR_LAG ${regions[@]} < scripts/load-roi-data.r
-
 

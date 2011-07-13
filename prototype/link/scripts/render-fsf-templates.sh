@@ -18,7 +18,7 @@ function render_firstlevel {
   highres_file=$6
   ev_dir1=$7
   ev_dir2=$8
-  design_dir=$9
+  ev_dir=$9
 
   subject_dir=$(pwd)
 
@@ -32,7 +32,7 @@ function render_firstlevel {
     | sed "s:<?= \$HIGHRES_FILE ?>:$subject_dir/$highres_file:g" \
     | sed "s:<?= \$EV1 ?>:$subject_dir/$ev_dir1:g" \
     | sed "s:<?= \$EV2 ?>:$subject_dir/$ev_dir2:g" \
-    | sed "s:<?= \$DESIGN_DIR ?>:$subject_dir/$design_dir:g"
+    | sed "s:<?= \$EV_DIR ?>:$subject_dir/$ev_dir:g" 
 
 }
 
