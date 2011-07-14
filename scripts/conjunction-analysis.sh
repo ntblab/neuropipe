@@ -44,7 +44,7 @@ fslmaths ${outputdir}/stats_concat.nii.gz -Tmin ${outputdir}/stats_min
 fslmaths ${outputdir}/stats_min.nii.gz -thr $thresh ${outputdir}/stats_thr
 
 #revert back to original signs
-fslmaths ${outputdir}/stats_thr.nii.gz -mul $vol1 $outputvol
+fslmaths ${outputdir}/stats_thr.nii.gz -mul ${outputdir}/sign_map_$(basename $vol1) $outputvol
 
 #clean up
 rm -rf ${outputdir}/abs_*

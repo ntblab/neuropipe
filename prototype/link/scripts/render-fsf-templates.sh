@@ -3,6 +3,9 @@
 # render-fsf-templates.sh fills in templated fsf files so FEAT can use them
 # original author: mason simon (mgsimon@princeton.edu)
 # this script was provided by NeuroPipe. modify it to suit your needs
+#
+# refer to the secondlevel neuropipe tutorial to see an example of how
+# to use this script
 
 set -e
 

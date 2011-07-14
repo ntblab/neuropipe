@@ -8,9 +8,12 @@ set -e
 
 if [ $# -ne 6 ]; then
   echo "
-usage: `basename $0` first_level_fsf_template stat_file num_regressors num_lags thirdlevel_dir output_dir
+usage: `basename $0` path/to/first_level_fsf_template stat_file num_regressors num_lags path/to/thirdlevel_dir path/to/output_dir
 
-groups all of the lags for each regressor into 4D images
+groups all of the lags for each regressor from a thirdlevel analysis into 4D images
+
+note: stat file refers to the name of the file in each cope's Feat directory that
+you want to look at, e.g. zstat1.nii.gz
 
 REQUIREMENTS:
  - FSL must be on the path

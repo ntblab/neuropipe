@@ -1,11 +1,10 @@
-#!/bin/bash
+#!/bin/bash -e
 #Author: Naz Al-Aidroos
 #Edited by: Alexa Tompary
+# This script re-scaffolds all subjects in your project directory
 
 source globals.sh
 
-#rescaffold each subject
 for subj in $ALL_SUBJECTS; do
-	rm -f $PROJECT_DIR/subjects/$subj/copy.sh
 	bash $PROJECT_DIR/scaffold $subj
 done

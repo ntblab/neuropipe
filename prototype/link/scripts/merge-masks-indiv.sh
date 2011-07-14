@@ -6,10 +6,15 @@ set -e
 
 if [ $# -ne 4 ]; then
   echo "
-usage: `basename $0` roi_coords roi_names src_dir dest_dir
+usage: `basename $0` roi_coords_txt roi_names_txt src_dir dest_dir
 
-This script uses the three-column ROI coordinates file (created by pick-rois-interactive.sh)
-and creates a mask for each specified ROI. Each mask includes bilateral ROIs.
+This script uses the ROI region names tetx file as well as the three-column ROI coordinates file 
+(created by pick-rois-interactive.sh) to create a mask for each specified ROI. 'src_dir' is the
+Feat directory of the localizer run used to pick your ROI coordinates; the script looks in there
+to use registration transformations to put your coordinates in standard space before creating 
+the masks
+
+Each mask includes bilateral ROIs. This script cannot be used for unilateral ROIs.
 
   "
   exit 1
