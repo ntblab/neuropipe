@@ -16,6 +16,7 @@ SUBJECT_DIR=$PROJ_DIR/subjects/$SUBJ
 
 RUNORDER_FILE=run-order.txt
 
+DATA_DIR=data
 SCRIPT_DIR=scripts
 FSF_DIR=fsf
 DICOM_ARCHIVE=data/raw.tar.gz
@@ -27,3 +28,11 @@ SECONDLEVEL_DIR=analysis/secondlevel
 EV_DIR=design
 BEHAVIORAL_OUTPUT_DIR=output/behavioral
 
+SCALING_FACTOR=10.0 #for use in tranform-to-psc.sh
+
+# Fill in below variables to fit your roi analysis -- all are used in roi.sh or scripts called within it
+ROI_COORDS_FILE=design/roi.txt
+LOCALIZER_DIR=analysis/firstlevel/localizer_hrf.feat
+ROI_DIR=results/roi
+ROI_KERNEL_TYPE=sphere
+ROI_KERNEL_SIZE=4
