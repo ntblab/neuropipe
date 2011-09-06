@@ -19,10 +19,10 @@
 
 set -e # stop immediately when an error occurs
 
+source globals.sh
 
 # set global variables
 TEMPLATE_DIR=prototype
-SUBJECTS_DIR=subjects
 LINK_DIR=$TEMPLATE_DIR/link
 COPY_DIR=$TEMPLATE_DIR/copy
 SUBJ_ID_PATTERN='<<SUBJECT_ID>>'
@@ -42,10 +42,14 @@ subject was last scaffolded
   exit
 fi
 
-
 # stick parameters into the right variables
 subj=$1
 subj_dir=$SUBJECTS_DIR/$subj
+
+if [ ! -d "$SUBJECTS_DIR" ]; then
+echo "if this is your first time setting up a subject with NeuroPipe,"
+echo "read README.txt in the subject's directory (just created)"
+fi
 
 mkdir -p $subj_dir
 
@@ -71,7 +75,7 @@ for path in $(find $LINK_DIR/*); do
     p=$(dirname $p)
   done
   
-  ln --symbolic --force ${prefix}$path $subj_dir/$rel_path
+  ln -s -f ${prefix}$path $subj_dir/$rel_path
 done
 
 # copy in each file in COPY_DIR, making their parent directories as needed, and
@@ -86,7 +90,7 @@ for path in $(find $COPY_DIR/*); do
     continue
   fi
 
-  tmp=$(mktemp)
+  tmp=$(mktemp -t temp)
   cat $path | sed "s:$SUBJ_ID_PATTERN:$subj:g" > $tmp;
   if [ -e "$subj_dir/$rel_path" ] && [ -n "$(diff $tmp $subj_dir/$rel_path)" ]; then
     echo "WARNING: $rel_path has been modified. not updating it" > /dev/stderr
@@ -99,5 +103,4 @@ done
 
 echo "created subject directory '$subj_dir'"
 
-echo "if this is your first time setting up a subject with NeuroPipe,"
-echo "read README.txt in the subject's directory (just created)"
+

@@ -15,6 +15,7 @@ if [ $# -ne 2 ]; then
   exit
 fi
 
+source globals.sh
 
 nifti_dir=$1
 output_dir=$2
@@ -31,8 +32,8 @@ TRUE=0
 FALSE=1
 is_functional() {
   file=$1
-  num_volumes=$(fslnvols $file)
-  if [[ "$num_volumes" -gt 2 ]]; then
+  num_volumes=$(fslnvols $file 2>/dev/null)
+  if [[ "$num_volumes" -gt 65 ]]; then #changed to 65 so qa doesn't run on dti scans
     return $TRUE
   else
     return $FALSE
@@ -48,5 +49,6 @@ for file in $nifti_dir/*.nii.gz; do
     functional_files="$functional_files $prefix.bxh"
   fi
 done
-fmriqa_generate.pl --overwrite $functional_files $output_dir
+
+$BXHDIR/fmriqa_generate.pl --overwrite $functional_files $output_dir 1>/dev/null 2>/dev/null
 
