@@ -50,5 +50,5 @@ for file in $nifti_dir/*.nii.gz; do
   fi
 done
 
-$BXHDIR/fmriqa_generate.pl --overwrite $functional_files $output_dir 1>/dev/null 2>/dev/null
+$BXH_DIR/fmriqa_generate.pl --overwrite $functional_files $output_dir 1>/dev/null 2>/dev/null
 
