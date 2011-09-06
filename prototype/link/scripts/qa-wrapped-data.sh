@@ -15,6 +15,7 @@ if [ $# -ne 2 ]; then
   exit
 fi
 
+source globals.sh
 
 nifti_dir=$1
 output_dir=$2
@@ -48,5 +49,6 @@ for file in $nifti_dir/*.nii.gz; do
     functional_files="$functional_files $prefix.bxh"
   fi
 done
-fmriqa_generate.pl --overwrite $functional_files $output_dir 1>/dev/null 2>/dev/null
+
+$BXHDIR/fmriqa_generate.pl --overwrite $functional_files $output_dir 1>/dev/null 2>/dev/null
 

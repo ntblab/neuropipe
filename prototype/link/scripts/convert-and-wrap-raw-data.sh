@@ -33,6 +33,7 @@ output_dir=$2
 output_prefix=$3
 run_order_file=$4
 
+source globals.sh
 
 ORIENTATION=LAS
 PREFIX=scan
