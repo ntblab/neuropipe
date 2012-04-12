@@ -50,13 +50,13 @@ fi
 
 mkdir -p $output_dir
 
-temp_dicom_dir=$(mktemp -d)
-temp_output_dir=$(mktemp -d)
+temp_dicom_dir=$(mktemp -d -t tmp.XXXXXX)
+temp_output_dir=$(mktemp -d -t tmp.XXXXXX)
 tar --extract --gunzip --file=$dicom_archive --directory=$temp_dicom_dir
 $BXH_DIR/dicom2bxh $temp_dicom_dir/* $temp_output_dir/$PREFIX.bxh 1>/dev/null 2>/dev/null
 
 # strip blank lines and comments from run order file
-stripped_run_order_file=$(mktemp)
+stripped_run_order_file=$(mktemp -t tmp.XXXXX)
 sed '/^$/d;/^#/d;s/#.*//' $run_order_file > $stripped_run_order_file
 
 # check that the actual number of scans retrieved matches what's expected, and
