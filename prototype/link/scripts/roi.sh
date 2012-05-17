@@ -3,9 +3,9 @@
 
 set -e
 
-if [ $# -lt 1 ]; then
+if [ $# -lt 2 ]; then
   echo "
-usage: `basename $0` path/to/feat_dir1 [path/to/feat_dir2] [path/to/feat_dir3]
+usage: `basename $0` scaling_factor path/to/feat_dir1 [path/to/feat_dir2] [path/to/feat_dir3]
 
 This script runs a psc transform and gaussian filter on your roi coordinates,
 and then extracts the time-locked stats for each coordinate in the space of the
@@ -37,7 +37,7 @@ function fir {
 
   mkdir -p $output_dir
 
-  tmp_coords=$(mktemp)
+  tmp_coords=$(mktemp -t tmp.XXXXXX)
   bash scripts/transform-coords-dest.sh $ROI_COORDS_FILE ${LOCALIZER_DIR} $feat_dir $tmp_coords
 
   stat_dir=$feat_dir/stats
@@ -53,7 +53,7 @@ function fir {
     if [ -f $psc_file ]; then
       echo "$psc_file already exists. skipping"
     else
-      bash scripts/transform-to-psc.sh $stat_file $feat_dir/mean_func.nii.gz $feat_dir/mask.nii.gz $psc_file
+      bash scripts/transform-to-psc.sh $stat_file $feat_dir/mean_func.nii.gz $feat_dir/mask.nii.gz $psc_file $scaling_factor
     fi
     if [ -f $filtered_psc_file ]; then
       echo "$filtered_psc_file already exists. skipping"
@@ -69,9 +69,10 @@ bash scripts/extract-stat-at-coords.sh "$stat_files" $tmp_coords >$output_dir/ro
 }
 
 mkdir -p $ROI_DIR
+scaling_factor=$1
 
 # number of runs as specified by input parameters
-for run in $@; do
+for run in "${@:2}"; do
 	mkdir -p $ROI_DIR/`basename ${run%%.*}`
 	fir $run $ROI_DIR/`basename ${run%%.*}`
 done

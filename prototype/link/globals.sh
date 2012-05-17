@@ -1,14 +1,13 @@
-#!/bin/bash -e
+#!/bin/bash
 # author: mgsimon@princeton.edu
 # this script sets up global variables for the analysis of the current subject
 
 set -e # stop immediately when an error occurs
 
-
 # add necessary directories to the system path
-export PATH=$PATH:/exanet/ntb/packages/bxh_xcede_tools/bin
-export MAGICK_HOME=/exanet/ntb/packages/ImageMagick-6.5.9-9
-
+export BXH_DIR=/jukebox/ntb/packages/bxh_xcede_tools/bin
+export MAGICK_HOME=/jukebox/ntb/packages/ImageMagick-6.5.9-9
+export BIAC_HOME=/jukebox/ntb/packages/BIAC_matlab/mr
 
 source scripts/subject_id.sh  # this loads the variable SUBJ
 PROJ_DIR=../../
@@ -27,8 +26,6 @@ FIRSTLEVEL_DIR=analysis/firstlevel
 SECONDLEVEL_DIR=analysis/secondlevel
 EV_DIR=design
 BEHAVIORAL_OUTPUT_DIR=output/behavioral
-
-SCALING_FACTOR=10.0 #for use in tranform-to-psc.sh
 
 # Fill in below variables to fit your roi analysis -- all are used in roi.sh or scripts called within it
 ROI_COORDS_FILE=design/roi.txt
