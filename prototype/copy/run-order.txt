@@ -25,7 +25,6 @@
 # - circle localizers from allegra transfer as 3 separate runs, so for each circle
 #   localizer you ran, you must include 3 lines in this file 
 # - localizers from skyra transfer as 3 separate runs, but scouts transfer as 11 
-# - scouts from skyra may transfer as 11 separate runs
 # - fieldmaps transfer as 2 separate runs, so include 2 lines in this file for
 #   each fieldmap you ran
 # - dti scans transfer as 6 separate runs, so include 6 lines in this file for
