@@ -4,7 +4,7 @@ Welcome to your NeuroPipe project directory
 This directory is designed to hold a neuroscience research project that
 consists of analyses of individual subjects, which are then combined into an
 across-subject (group) analysis. NeuroPipe is optimized for the case that
-per-subject analyses are usually identical, but occaisionally deviate because
+per-subject analyses are usually identical, but occasionally deviate because
 the data collection protocol was modified to fit time constraints, a subject
 fell asleep, etc...
 
