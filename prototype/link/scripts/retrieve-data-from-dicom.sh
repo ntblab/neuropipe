@@ -143,7 +143,8 @@ do
 	temp_file_decomp=(`echo $file | tr "-" "\n"`)
 	temp_series=`printf "%03d" ${temp_file_decomp[0]}`
 	temp_imagenum=`printf "%04d" ${temp_file_decomp[1]}`
-	temp_name=$temp_series'_'$temp_imagenum
+	temp_TE=`printf "%03d" ${temp_file_decomp[2]}`
+	temp_name=$temp_series'_'$temp_imagenum'_'$temp_TE
 	mv $file $temp_name;
 done
 
